@@ -29,17 +29,28 @@ int verProductos(float ID[3][8], char nombre[8][15], char descripcion[8][15], in
 int nuevoProducto(char nombre[8][15], char nuevoNombre[15], char nuevaDescripcion[15], char descripcion[8][15], float ID[3][8], int contador)
 {
     int menu;
-    printf("Ingrese el nuevo producto\n");
-    printf("Nombre:");
-    scanf("%s", nuevoNombre);
-    strcpy(nombre[contador], nuevoNombre);
-    printf("Descripcion:");
-    scanf("%s", nuevaDescripcion);
-    strcpy(descripcion[contador], nuevaDescripcion);
-    printf("Cantidad:");
-    scanf("%f", &ID[1][contador]);
-    printf("Precio: ");
-    scanf("%f", &ID[2][contador]);
+    if (contador <= 7)
+    {
+        printf("Ingrese el nuevo producto\n");
+        printf("Nombre:");
+        scanf("%s", nuevoNombre);
+        strcpy(nombre[contador], nuevoNombre);
+        printf("Descripcion:");
+        scanf("%s", nuevaDescripcion);
+        strcpy(descripcion[contador], nuevaDescripcion);
+        printf("Cantidad:");
+        scanf("%f", &ID[1][contador]);
+        printf("Precio: ");
+        scanf("%f", &ID[2][contador]);
+        printf("\n");
+    }
+    else if (contador > 7)
+    {
+        printf("Se ha alcanzado el numero MAXIMO de articulos en el invertario\n");
+        printf("Para ingresar un nuevo articulo, elimine o modifique uno ya existente");
+        printf("\n");
+    }
+
     menu = 0;
     return menu;
 }
@@ -83,7 +94,7 @@ int modificarProductos(char nombre[8][15], char nuevoNombre[15], char nuevaDescr
             strcpy(nombre[var1], "Vacio");
             strcpy(descripcion[var1], "Vacio");
         }
-
+        printf("\n");
         menu = 0;
         break;
     default:
